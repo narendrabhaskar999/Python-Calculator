@@ -14,8 +14,15 @@ entry.insert(0, "")
 # Function to update the screen with button presses
 def button_click(number):
     current = entry.get()
+
+    # Check if it is the percentage button
+    if number == "%":
+        current = str(float(current) / 100) # Calculate percentage by dividing by 100
+    else:
+        current += number # Append the number to the current entry
+
     entry.delete(0, END)
-    entry.insert(0, current + number)
+    entry.insert(0, current)
 
 # Function to clear the screen
 def clear():
@@ -41,7 +48,7 @@ buttons = [
     ("6", 2, 0), ("5", 2, 1), ("4", 2, 2), ("x", 2, 3),
     ("1", 3, 0), ("2", 3, 1), ("3", 3, 2), ("-", 3, 3),
     ("Clr", 4, 0), ("0", 4, 1), (".", 4, 2), ("+", 4, 3),
-    ("=", 5, 0)
+    ("=", 5, 0), ("%", 5, 1), ("(", 5, 2), (")", 5, 3)
 ]
 
 # Creating the buttons and placing them using grid (no functionality for now)
